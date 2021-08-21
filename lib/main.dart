@@ -27,6 +27,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +37,14 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+          children: [
+            TextField(
+              controller: controller,
+            ),
+            AnimatedBuilder(animation: controller,
+                builder: (_,__){
+                     return Text(controller.text);
+            }),
           ],
         ),
       ),
