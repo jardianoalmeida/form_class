@@ -27,7 +27,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -35,22 +34,33 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text('Forms'),
       ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            TextField(
-              controller: controller,
-              onChanged: (value){
-                print(value);
-              },
-            ),
-            AnimatedBuilder(animation: controller,
-                builder: (_,__){
-                     return Text(controller.text);
-            }),
+            CustomTextField(),
+            CustomTextField(),
+            CustomTextField(),
           ],
         ),
       ),
     );
   }
 }
+
+class CustomTextField extends StatelessWidget {
+  const CustomTextField({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const TextField(
+      decoration: InputDecoration(
+        labelText: 'Name',
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(40.0)),
+        ),
+      ),
+    );
+  }
+}
+
