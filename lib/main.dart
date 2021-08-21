@@ -40,6 +40,9 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             TextField(
               controller: controller,
+              onChanged: (value){
+                print(value);
+              },
             ),
             AnimatedBuilder(animation: controller,
                 builder: (_,__){
